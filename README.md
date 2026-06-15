@@ -1,23 +1,40 @@
 # Mayan Decoder
 
-Mayan Decoder es una aplicacion externa `.fap` para Flipper Zero que convierte un numero decimal a numeracion maya usando la API de Canvas.
+Mayan Decoder is an external `.fap` application for Flipper Zero that converts decimal numbers into Mayan numerals using the Flipper Canvas API.
 
-## Funcionalidad
+## Features
 
-- Rango inicial: `0` a `999`.
-- Conversion a base vigesimal para representar niveles mayas apilados verticalmente.
-- `0`: concha vectorial simple.
-- `1..4`: puntos.
-- `5..19`: barras horizontales de cinco unidades y puntos residuales.
-- Renderizado directo con `ViewPort` y `Canvas`.
+- Decimal range: `0` to `9999`.
+- Vigesimal conversion with vertically stacked Mayan levels.
+- `0`: simple shell glyph.
+- `1..4`: dots.
+- `5..19`: horizontal bars plus remaining dots.
+- Direct rendering through `ViewPort` and `Canvas`.
+- Intro screen with simple Mayan pyramid artwork.
+- Digit-based numeric input mode for larger values.
 
-## Controles
+## Controls
 
-- `Up` / `Right`: incrementar el numero.
-- `Down` / `Left`: decrementar el numero.
-- `OK` / `Back`: salir de la aplicacion.
+Intro screen:
 
-## Estructura
+- `OK`: enter the app.
+- `Back`: exit.
+
+Main screen:
+
+- `Up` / `Right`: increment the number.
+- `Down` / `Left`: decrement the number.
+- `OK`: open numeric input.
+- `Back`: exit the application.
+
+Numeric input:
+
+- `Left` / `Right`: select digit.
+- `Up` / `Down`: increase or decrease the selected digit.
+- `OK`: save the number.
+- `Back`: cancel and return.
+
+## Repository Structure
 
 ```text
 .
@@ -26,56 +43,58 @@ Mayan Decoder es una aplicacion externa `.fap` para Flipper Zero que convierte u
 +-- assets
 |   +-- generate_icon.py
 |   +-- icon.png
++-- docs
+|   +-- changelog.md
++-- screenshots
+|   +-- ss0.png
+|   +-- ss1.png
+|   +-- ss2.png
+|   +-- ss3.png
 +-- README.md
 ```
 
-## Compilacion con uFBT
+## Build With uFBT
 
-Instalar uFBT en Windows:
+Install or update uFBT:
 
-```powershell
-py -m pip install --upgrade ufbt
+```sh
+python -m pip install --upgrade ufbt
 ```
 
-Compilar desde la raiz del proyecto:
+Clone and build:
 
-```powershell
-cd "C:\Users\R0G3R\Documents\Tools\Flipper Zero\N#Maya"
+```sh
+git clone https://github.com/RogerF5-Security/Mayan_decoder.git
+cd Mayan_decoder
 ufbt
 ```
 
-El binario `.fap` se generara dentro del directorio `dist`.
+The compiled `.fap` will be generated in the `dist/` directory.
 
-Compilar, subir y ejecutar en un Flipper conectado por USB:
+Build, upload, and run on a connected Flipper Zero:
 
-```powershell
+```sh
 ufbt launch
 ```
 
-Actualizar el SDK usado por uFBT:
+Update the uFBT SDK:
 
-```powershell
+```sh
 ufbt update
 ```
 
-## Regenerar el icono
+## Regenerate Icon
 
-El icono FAP debe ser PNG monocromatico de 1 bit y `10x10` pixeles. Para regenerarlo:
+The FAP icon must be a 1-bit `10x10` PNG. To regenerate it:
 
-```powershell
-py .\assets\generate_icon.py
+```sh
+python assets/generate_icon.py
 ```
 
-## Git
+## Catalog Assets
 
-Repositorio remoto configurado:
+Screenshots are stored in `screenshots/` as unmodified qFlipper PNG captures for Flipper Application Catalog submission.
 
-```text
-https://github.com/RogerF5-Security/Mayan_decoder
-```
+## License
 
-Primer push recomendado:
-
-```powershell
-git push -u origin main
-```
+MIT License.
