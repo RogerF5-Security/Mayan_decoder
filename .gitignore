@@ -1,0 +1,6 @@
+dist/
+.ufbt/
+*.fap
+*.elf
+*.map
+*.log
